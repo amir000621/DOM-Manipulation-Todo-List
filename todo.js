@@ -15,11 +15,21 @@
       localStorage.setItem("todos",JSON.stringify(todos));
     }
 
+    function appendTodoInHtml(todoText){
+        const todoList = document.getElementById("todoList");//ye id hai ul tag ki 
+        const todo = document.createElement("li");//create an html element of type li
+        todo.textContent = todoText;//todo add krne se ab list banti hui dikhayi degi localStorage se alag
+        todoList.appendChild(todo);
+    }
+
    
     document.addEventListener("DOMContentLoaded",()=>{
-     const todoInput = document.getElementById("todoInput")
+     const todoInput = document.getElementById("todoInput");
 
-     const submitButton = document.getElementById("addTodo")
+     const submitButton = document.getElementById("addTodo");
+
+     const todoList = document.getElementById("todoList");
+
      submitButton.addEventListener("click",(event)=>{
         const todoText = todoInput.value;//todoInput ke aandar jo bhi value padi hai vo fetch ho jaye event fire hone pr and event kya hai click
         if(todoText === ""){
@@ -27,6 +37,8 @@
         }
         else{
             addTodoToLocalStorage(todoText);  
+            appendTodoInHtml(todoText);
+            todoInput.value = '';//add hone ke baad input field empty ho uske liye
         }
      })
 
@@ -37,5 +49,11 @@
        event.target.value = todoText.trim();
        console.log(event.target.value)
      })
-        loadTodos();//loadTodos when whole document is loaded
-      })
+        const todos = loadTodos();//loadTodos when whole document is loaded
+        
+        todos.todoList.forEach(todo=>{
+            const newTodoItem = document.createElement("li");
+            newTodoItem.textContent = todo;
+            todoList.appendChild(newTodoItem);
+        })
+      });
