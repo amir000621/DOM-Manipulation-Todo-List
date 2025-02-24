@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(12, 11, 11);
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    background-color: gray;
+    max-width: 600px;
+    margin: 0 auto; /*y axis zero and x axis auto jisse ye beech mien aa gaya*/
+    box-shadow: 15px 15px white;
+    padding: 20px;
+}
+#todoInput{
+    width: 75%;/*parent ka 75% width*/
+    padding: 8px;
+    border: 3px solid whitesmoke ;
+    border-radius: 5px;
+}
+#addTodo{
+    margin-left: 2px;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: large;
+}
+button{
+    cursor: pointer;
+}
